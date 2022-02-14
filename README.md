@@ -1,1 +1,1 @@
-A basic character driver
+A basic character driver with read/wirite functions

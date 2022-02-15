@@ -38,13 +38,11 @@ static int basic_init(void) {
 	/*Register with the kernel and declare that we want to register
 	a character driver*/
 	
-	int t = register_chrdev(80 /*major num*/,
-	"Basic Char Driver" /*name of driver*/,
-	&basic_file_operations /*file operations*/);
-	if(t<0){
+	if((register_chrdev(80, "Basic Char Driver", &basic_file_operations))<0){
 		printk(KERN_ALERT "Initialization failed!\n");
-		return t;	
+		return -1;	
 	}
+	printk(KERN_ALERT "Initialization success!\n");
 	return 0;
 }
 
